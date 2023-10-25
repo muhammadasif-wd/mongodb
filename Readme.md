@@ -169,5 +169,51 @@ db.users.find({ age: 25, gender: "female" })
 ```javascript
 db.users.find({ $and: [{ age: 25 }, { gender: "female" }] })
 ```
+**4: $exists, $type, $size, $all, $elemMatch অপারেটর এক্সপ্লোর করুন**
 
-এই উদাহরণগুলি দিয়ে আপনি $and, $or, ইম্প্লিসিট, এবং এক্সপ্লিসিট "এন্ড" অপারেটরের ব্যবহার বুঝতে সাহায্য পেতে পারেন।
+1. **$exists অপারেটর**:
+   - ডকুমেন্টে একটি ফিল্ডের উপস্থিতি পরীক্ষা করতে নিম্নলিখিত মতে MongoDB কিউরি ব্যবহার করা যেতে পারে:
+
+   ```json
+   db.collection.find({ field_name: { $exists: true } })
+   ```
+
+2. **$type অপারেটর**:
+   - ডকুমেন্টে একটি ফিল্ডের ডেটা টাইপ পরীক্ষা করতে নিম্নলিখিত মতে MongoDB কিউরি ব্যবহার করা যেতে পারে:
+
+   ```json
+   db.collection.find({ field_name: { $type: data_type } })
+   ```
+
+   উদাহরণঃ স্ট্রিং টাইপ এর ফিল্ড খুঁজে বের করার ক্যুরি:
+
+   ```json
+   db.collection.find({ field_name: { $type: "string" } })
+   ```
+
+3. **$size অপারেটর**:
+   - ডকুমেন্টে একটি অ্যারের সাইজ পরীক্ষা করতে নিম্নলিখিত মতে MongoDB কিউরি ব্যবহার করা যেতে পারে:
+
+   ```json
+   db.collection.find({ array_field: { $size: size_value } })
+   ```
+
+   উদাহরণঃ একটি অ্যারে যার সাইজ 3:
+
+   ```json
+   db.collection.find({ array_field: { $size: 3 } })
+   ```
+
+4. **$all অপারেটর**:
+   - ডকুমেন্টে একটি অ্যারেতে সব উপাদানের সাথে মিলে ডকুমেন্ট সিলেক্ট করতে নিম্নলিখিত মতে MongoDB কিউরি ব্যবহার করা যেতে পারে:
+
+   ```json
+   db.collection.find({ array_field: { $all: [element1, element2, element3] } })
+   ```
+
+5. **$elemMatch অপারেটর**:
+   - ডকুমেন্টে একটি অ্যারে এবং একটি কন্ডিশনের সাথে মিলে ডকুমেন্ট সিলেক্ট করতে নিম্নলিখিত মতে MongoDB কিউরি ব্যবহার করা যেতে পারে:
+
+   ```json
+   db.collection.find({ array_field: { $elemMatch: { field_name: condition } } })
+   ```
