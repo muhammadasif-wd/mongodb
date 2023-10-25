@@ -153,142 +153,142 @@ db.users.find({ age: 25, gender: "female" })
 ```javascript
 db.users.find({ $and: [{ age: 25 }, { gender: "female" }] })
 ```
-### $exists, $type, $size, $all, $elemMatch, $set, $addToSet, $push, $unset, $pop, $pull, $pullAll, deleteOne, deleteMany, dropCollection, createCollection, $inc, $min অপারেটর এক্সপ্লোর করুন .
+- ## $exists, $type, $size, $all, $elemMatch, $set, $addToSet, $push, $unset, $pop, $pull, $pullAll, deleteOne, deleteMany, dropCollection, createCollection, $inc, $min অপারেটর এক্সপ্লোর করুন .
 
 1. **$exists অপারেটর**:
    - ডকুমেন্টে একটি ফিল্ডের উপস্থিতি পরীক্ষা করতে নিম্নলিখিত মতে MongoDB কিউরি ব্যবহার করা যেতে পারে:
 
-   ``json
+   ```javascript
    db.collection.find({ field_name: { $exists: true } })
-   ``
+   ```
 
 2. **$type অপারেটর**:
    - ডকুমেন্টে একটি ফিল্ডের ডেটা টাইপ পরীক্ষা করতে নিম্নলিখিত মতে MongoDB কিউরি ব্যবহার করা যেতে পারে:
 
-   ```json
+   ```javascript
    db.collection.find({ field_name: { $type: data_type } })
    ```
 
    উদাহরণঃ স্ট্রিং টাইপ এর ফিল্ড খুঁজে বের করার ক্যুরি:
 
-   ```json
+   ```javascript
    db.collection.find({ field_name: { $type: "string" } })
    ```
 
 3. **$size অপারেটর**:
    - ডকুমেন্টে একটি অ্যারের সাইজ পরীক্ষা করতে নিম্নলিখিত মতে MongoDB কিউরি ব্যবহার করা যেতে পারে:
 
-   ```json
+   ```javascript
    db.collection.find({ array_field: { $size: size_value } })
    ```
 
    উদাহরণঃ একটি অ্যারে যার সাইজ 3:
 
-   ```json
+   ```javascript
    db.collection.find({ array_field: { $size: 3 } })
    ```
 
 4. **$all অপারেটর**:
    - ডকুমেন্টে একটি অ্যারেতে সব উপাদানের সাথে মিলে ডকুমেন্ট সিলেক্ট করতে নিম্নলিখিত মতে MongoDB কিউরি ব্যবহার করা যেতে পারে:
 
-   ```json
+   ```javascript
    db.collection.find({ array_field: { $all: [element1, element2, element3] } })
    ```
 
 5. **$elemMatch অপারেটর**:
    - ডকুমেন্টে একটি অ্যারে এবং একটি কন্ডিশনের সাথে মিলে ডকুমেন্ট সিলেক্ট করতে নিম্নলিখিত মতে MongoDB কিউরি ব্যবহার করা যেতে পারে:
 
-   ```json
+   ```javascript
    db.collection.find({ array_field: { $elemMatch: { field_name: condition } } })
    ```
 
 6. **$set অপারেটর**:
    - $set অপারেটর দিয়ে একটি ফিল্ডের মান সেট করা যায়।
 
-   ```json
+   ```javascript
    db.collection.update({ _id: 1 }, { $set: { field_name: "new_value" } })
    ```
 
 7. **$addToSet অপারেটর**:
    - $addToSet অপারেটর দিয়ে একটি অ্যারেতে মৌলিক মান যোগ করা হয়, তবে সমস্ত ডুপ্লিকেট মৌলিক মান স্থায়ী রূপে একবার শোধ করা হয়।
 
-   ```json
+   ```javascript
    db.collection.update({ _id: 1 }, { $addToSet: { array_field: "new_value" } })
    ```
 
 8. **$push অপারেটর**:
    - $push অপারেটর দিয়ে একটি অ্যারেতে মৌলিক মান যোগ করা যায়, সমস্ত মৌলিক মান স্থায়ী রূপে সংরক্ষণ করা হয়।
 
-   ```json
+   ```javascript
    db.collection.update({ _id: 1 }, { $push: { array_field: "new_value" } })
    ```
 
 9. **$unset অপারেটর**:
    - $unset অপারেটর দিয়ে একটি ফিল্ড অনসেট করা যায়, যা মৌলিক মান বা স্থায়ী মৌলিক মান হতে পারে।
 
-   ```json
+   ```javascript
    db.collection.update({ _id: 1 }, { $unset: { field_name: 1 } })
    ```
 
 10. **$pop অপারেটর**:
    - $pop অপারেটর দিয়ে একটি অ্যারে থেকে একটি মৌলিক মান বা স্থায়ী মৌলিক মান পপ করা যায়।
 
-   ```json
+   ```javascript
    db.collection.update({ _id: 1 }, { $pop: { array_field: 1 } })
    ```
 
 11. **$pull অপারেটর**:
    - $pull অপারেটর দিয়ে একটি অ্যারে থেকে মৌলিক মান বা স্থায়ী মৌলিক মান টি সরানো যায়।
 
-   ```json
+   ```javascript
    db.collection.update({ _id: 1 }, { $pull: { array_field: "value_to_remove" } })
    ```
 
 12. **$pullAll অপারেটর**:
    - $pullAll অপারেটর দিয়ে একটি অ্যারে থেকে সমস্ত স্থায়ী মৌলিক মান সরানো যায়।
 
-   ```json
+   ```javascript
    db.collection.update({ _id: 1 }, { $pullAll: { array_field: ["value1", "value2"] } })
    ```
 
 13. **deleteOne মেথড**:
    - deleteOne মেথড ব্যবহার করে একটি ডকুমেন্ট ডিলিট করা যায়।
 
-   ```json
+   ```javascript
    db.collection.deleteOne({ _id: 1 })
    ```
 
 14. **deleteMany মেথড**:
    - deleteMany মেথড ব্যবহার করে একাধিক ডকুমেন্ট ডিলিট করা যায়।
 
-   ```json
+   ```javascript
    db.collection.deleteMany({ field_name: "value_to_delete" })
    ```
 
 15. **dropCollection মেথড**:
     - dropCollection মেথড দিয়ে একটি কালেকশন ড্রপ করা যায়, অর্থাৎ সম্পূর্ণ কালেকশন মুছে ফেলা হয়।
 
-    ```json
+    ```javascript
     db.collection.drop()
     ```
 
 16. **createCollection মেথড**:
     - createCollection মেথড দিয়ে একটি কালেকশন তৈরি করা যায়।
 
-    ```json
+    ```javascript
     db.createCollection("new_collection")
     ```
 
 17. **$inc অপারেটর**:
     - $inc অপারেটর দিয়ে একটি ফিল্ডের মান ইনক্রিমেন্ট করা যায়।
 
-    ```json
+    ```javascript
     db.collection.update({ _id: 1 }, { $inc: { field_name: 1 } })
     ```
 
 18. **$min অপারেটর**:
     - $min অপারেটর দিয়ে দুটি মৌলিক মানের মধ্যে ছোট মান নির্ধারণ করা যায়।
 
-    ```json
+    ```javascript
     db.collection.update({ _id: 1 }, { $min: { field_name: min_value } })
     ```
