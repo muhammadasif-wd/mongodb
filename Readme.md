@@ -153,14 +153,14 @@ db.users.find({ age: 25, gender: "female" })
 ```javascript
 db.users.find({ $and: [{ age: 25 }, { gender: "female" }] })
 ```
-##$exists, $type, $size, $all, $elemMatch, $set, $addToSet, $push, $unset, $pop, $pull, $pullAll, deleteOne, deleteMany, dropCollection, createCollection, $inc, $min অপারেটর এক্সপ্লোর করুন .
+### $exists, $type, $size, $all, $elemMatch, $set, $addToSet, $push, $unset, $pop, $pull, $pullAll, deleteOne, deleteMany, dropCollection, createCollection, $inc, $min অপারেটর এক্সপ্লোর করুন .
 
 1. **$exists অপারেটর**:
    - ডকুমেন্টে একটি ফিল্ডের উপস্থিতি পরীক্ষা করতে নিম্নলিখিত মতে MongoDB কিউরি ব্যবহার করা যেতে পারে:
 
-   ```json
+   ``json
    db.collection.find({ field_name: { $exists: true } })
-   ```
+   ``
 
 2. **$type অপারেটর**:
    - ডকুমেন্টে একটি ফিল্ডের ডেটা টাইপ পরীক্ষা করতে নিম্নলিখিত মতে MongoDB কিউরি ব্যবহার করা যেতে পারে:
